@@ -13,14 +13,7 @@ body{
     color:#222222;
 }
 
-.f-info{
-    height:8rem;
-    background-color: #ebebeb;
-    display: flex;
-    flex-wrap:wrap;
-    justify-content: center;
-    align-items: space-evenly;
-}
+
 
 
 .card{
@@ -38,6 +31,10 @@ body{
 }
 .card-text p{
     font-weight: 400;
+}
+
+.listing-link{
+    text-decoration: none;
 }
 
 .card-img-overlay{
@@ -72,4 +69,42 @@ body{
 .edit-btn{
     background-color: #fe424d !important;
     border: none !important;
+}
+
+
+
+.f-info-links a{
+    text-decoration: none;
+    color: #222222;
+}
+.f-info-links  :hover{
+    text-decoration: underline;
+    
+}
+
+.f-info{
+    height:8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: space-evenly;
+    text-align: center;
+}
+
+.f-info-links{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.f-info-socials, .f-info-brand{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.f-info-socials i{
+    font-size: 1.2rem;
+    margin-right: 0.8rem;
 }
