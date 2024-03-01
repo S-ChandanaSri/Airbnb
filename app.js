@@ -132,7 +132,15 @@ app.listen(8080,()=>{
   }
 });
 */
-
+app.get("/", async (req, res) => {
+  try {
+    const allListings = await Listing.find({});
+    res.render("home.ejs", { allListings });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "An error occurred while fetching the listings" });
+  }
+});
 
 
 app.get("/listing", async (req, res) => {
