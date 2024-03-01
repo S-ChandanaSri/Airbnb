@@ -132,6 +132,21 @@ app.listen(8080,()=>{
   }
 });
 */
+
+
+async function insertSampleListings() {
+  try {
+    await Listing.insertMany(sampleListings);
+    console.log('Sample listings inserted successfully.');
+  } catch (error) {
+    console.error('Error inserting sample listings:', error);
+  }
+}
+
+// Call the function to insert sample listings
+insertSampleListings();
+
+
 app.get("/", async (req, res) => {
   try {
     const allListings = await Listing.find({});
