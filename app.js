@@ -6,7 +6,7 @@ if(process.env.NODE_ENV != "production"){
 console.log(process.env)
 
 const express=require("express");
-
+const router = express.Router();
 const path=require("path")
 const mongoose = require('mongoose');
 const Listing=require("./models/listing.js");
