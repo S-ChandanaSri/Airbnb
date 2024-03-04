@@ -24,6 +24,7 @@ const userRouter = require("./routes/user.js");
 const flash = require("connect-flash");
 const app = express();
 const listings = require("./routes/listing.js")
+const reviews = require("./routes/review.js")
 
 
 
@@ -61,8 +62,13 @@ const sessionOptions = {
   store,
   secret: process.env.SECRET,
   resave: false,
-  saveUninitialized: true
-}
+  saveUninitialized: true,
+  cookie: {
+    expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+    httpOnly: true,
+  }
+};
 
 
 
@@ -89,49 +95,18 @@ app.use((req,res,next) =>{
 });
 app.use("/",userRouter);
 app.use("/listings",listings);
+app.use("/listings/:id/reviews",reviews);
 
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-/*passport.use(new LocalStrategy((username, password, done) => {
-  User.findOne({ username: username }, (err, user) => {
-      if (err) { return done(err); }
-      if (!user) { return done(null, false); }
-      if (!user.validPassword(password)) { return done(null, false); }
-      return done(null, user);
-  });
-}));
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
 
-passport.deserializeUser((id, done) => {
-  User.findById(id, (err, user) => {
-      done(err, user);
-  });
-});*/
 
 app.listen(8080,()=>{
     console.log("server is listening");
 })
 
-/*app.get("/testListing", async (req, res) => {
-  try {
-    let sampleListings = new Listing({
-      title: "..",
-      description: "ll",
-      price: "1200",
-      location: "ggg",
-      country: "india"
-    });
-    await sampleListings.save();
-    res.json({ message: "Listing saved successfully" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "An error occurred while saving the listing" });
-  }
-});
-*/
+
 
 
 
@@ -158,14 +133,7 @@ app.get("/listing", async (req, res) => {
   }
 });
 
-/*app.get("/demouser",async(req,res)=>{
-  let fakeuser= new User({
-    email: "ss@gmail.com",
-    username: "student"
-  });
-  let registerdUser = await User.register(fakeuser, "helloworld");
-  res.send(registerdUser)
-})*/
+
 
 
 app.get("/listings/new",(req,res)=>{
