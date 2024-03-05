@@ -14,6 +14,6 @@ router.post("/",isLoggedIn,async (req,res)=>{
     listing.reviews.push(newReview);
     
     await newReview.save();
-    await listing.saveO();
+    await listing.save();
      res.redirect(`/listing/${listing._id}`); 
 });
