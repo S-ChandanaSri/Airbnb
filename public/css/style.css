@@ -77,21 +77,9 @@ body{
     text-decoration: none;
     color: #222222;
 }
-.f-info-links  :hover{
+.f-info-links a :hover{
     text-decoration: underline;
     
-}
-
-.f-info{
-    height:8rem;
-    background-color: #ebebeb;
-    display: flex;
-    flex-wrap:wrap;
-    justify-content: center;
-    align-items: space-evenly;
-    text-align: center;
- 
-    bottom: 0;
 }
 
 .f-info-links{
@@ -106,6 +94,21 @@ body{
     align-items: center;
     justify-content: center;
 }
+
+.f-info{
+    height:8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: space-evenly;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
 .f-info-socials i{
     font-size: 1.2rem;
     margin-right: 0.8rem;
