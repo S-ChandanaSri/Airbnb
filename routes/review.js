@@ -17,3 +17,5 @@ router.post("/",isLoggedIn,async (req,res)=>{
     await listing.save();
      res.redirect(`/listing/${listing._id}`); 
 });
+
+module.exports = router;
