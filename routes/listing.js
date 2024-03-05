@@ -10,7 +10,7 @@ const {storage} = require("../cloudConfig.js");
 const upload = multer({storage});
 
 
-router.get("/",  async(req, res) => {
+router.get("/listing",  async(req, res) => {
     try {
       const allListings = await Listing.find({});
       res.render("home.ejs", { allListings });
@@ -45,7 +45,7 @@ router.get("/",  async(req, res) => {
    res.render("show.ejs",{allChatt});
   
   });
-
+  
   
   router.post("/",isLoggedIn, upload.single('listing[image]'), async (req,res,next)=>{
     let url = req.file.path;
